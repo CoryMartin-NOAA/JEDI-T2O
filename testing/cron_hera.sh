@@ -22,7 +22,7 @@ BODY=$test_dir/msg.txt
 source $JEDIENV
 
 # check to see if any repo has been updated
-$script_dir/check_update.sh $test_dir/build $test_dir/bundle $stable_dir/commits
+$script_dir/check_update.sh $stable_dir/build $test_dir/bundle $stable_dir/commits
 
 if [[ $? == 0 ]]; then
   exit 0
