@@ -1,5 +1,5 @@
 #!/bin/bash
-# cron_hera.sh
+# cron_orion.sh
 # - check if JEDI repositories have been updated
 #   if so:
 #   - build
@@ -8,13 +8,13 @@
 #   - move to 'stable' directory
 
 # define vars
-JEDIENV=/scratch1/NCEPDEV/stmp4/Cory.R.Martin/hofxcs/src/hofx/cfg/platform/hera/JEDI
-stable_dir=/scratch1/NCEPDEV/da/Cory.R.Martin/JEDI/stable/intel/
-test_dir=/scratch1/NCEPDEV/da/Cory.R.Martin/JEDI/testing/intel/
-script_dir=/scratch1/NCEPDEV/da/Cory.R.Martin/JEDI/utils/JEDI-T2O/testing/
+JEDIENV=/work/noaa/stmp/Cory.R.Martin/jedi/hofxcs/src/hofx/cfg/platform/orion/JEDI
+stable_dir=/work/noaa/da/cmartin/JEDI/stable/intel/
+test_dir=/work/noaa/da/cmartin//JEDI/testing/intel/
+script_dir=/work/noaa/da/Cory.R.Martin/noscrub/JEDI/utils/JEDI-T2O/testing/
 PEOPLE="Cory.R.Martin@noaa.gov"
-BUILD_BIN=/scratch1/NCEPDEV/stmp4/Cory.R.Martin/hofxcs/src/hofx/bin/buildJEDI.sh
-BUNDLE_YAML=/scratch1/NCEPDEV/stmp4/Cory.R.Martin/hofxcs/src/hofx/cfg/hofxbundle.yaml
+BUILD_BIN=/work/noaa/stmp/Cory.R.Martin/jedi/hofxcs/src/hofx/bin/buildJEDI.sh
+BUNDLE_YAML=/work/noaa/stmp/Cory.R.Martin/jedi/hofxcs/src/hofx/cfg/hofxbundle.yaml
 USER_YAML=$test_dir/develop_ci.yaml
 BODY=$test_dir/msg.txt
 
@@ -52,10 +52,10 @@ if [[ $? == 0 ]]; then
   unlink $stable_dir/build
   ln -s $test_dir/build-$today $stable_dir/build
   # prepare to send a success email, remove later?
-  SUBJECT="SUCCESS of JEDI develop CI on Hera"
+  SUBJECT="SUCCESS of JEDI develop CI on Orion"
   now=`date`
   cat > $BODY << EOF
-The develop branches of JEDI build on Hera and all tests pass successfully.
+The develop branches of JEDI build on Orion and all tests pass successfully.
 Tests completed at $now
 Intel stable directory $stable_dir/build now points to $test_dir/build-$today
 EOF
@@ -64,7 +64,7 @@ EOF
   $script_dir/get_hashes.sh $test_dir/bundle $stable_dir/commits
 else
   # There is a problem...
-  SUBJECT="FAILURE of JEDI develop CI on Hera"
+  SUBJECT="FAILURE of JEDI develop CI on Orion"
   now=`date`
   cat > $BODY << EOF
 The develop branches of JEDI did not either build successfully or tests failed.
