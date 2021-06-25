@@ -18,6 +18,7 @@ BUNDLE_YAML=/work/noaa/stmp/Cory.R.Martin/jedi/hofxcs/src/hofx/cfg/hofxbundle.ya
 USER_YAML=$test_dir/develop_ci.yaml
 
 # source JEDI environment
+source ~/.bash_profile
 source $JEDIENV
 
 # check to see if any repo has been updated

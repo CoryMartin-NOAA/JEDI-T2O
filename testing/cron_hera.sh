@@ -19,6 +19,7 @@ USER_YAML=$test_dir/develop_ci.yaml
 BODY=$test_dir/msg.txt
 
 # source JEDI environment
+source ~/.bash_profile
 source $JEDIENV
 
 # check to see if any repo has been updated
