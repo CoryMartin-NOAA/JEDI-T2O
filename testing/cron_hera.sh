@@ -20,6 +20,7 @@ BODY=$test_dir/msg.txt
 
 # source JEDI environment
 source ~/.bash_profile
+source /apps/lmod/7.7.18/init/sh
 source $JEDIENV
 
 # check to see if any repo has been updated
