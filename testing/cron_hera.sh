@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash --login
 # cron_hera.sh
 # - check if JEDI repositories have been updated
 #   if so:
@@ -19,8 +19,8 @@ USER_YAML=$test_dir/develop_ci.yaml
 BODY=$test_dir/msg.txt
 
 # source JEDI environment
-source ~/.bash_profile
-source /apps/lmod/7.7.18/init/sh
+#source ~/.bash_profile
+#source /apps/lmod/7.7.18/init/sh
 source $JEDIENV
 
 # check to see if any repo has been updated
