@@ -48,9 +48,13 @@ $BUILD_BIN $USER_YAML $BUNDLE_YAML
 
 if [[ $? == 0 ]]; then
   # tests pass successfully
+  # figure out path of old build to remove
+  oldbuild=`readlink $stable_dir/build`
   # remove symlink to stable build
   unlink $stable_dir/build
   ln -s $test_dir/build-$today $stable_dir/build
+  # remove old build
+  rm -rf $oldbuild
   # prepare to send a success email, remove later?
   SUBJECT="SUCCESS of JEDI develop CI on Hera"
   now=`date`

@@ -50,9 +50,13 @@ $BUILD_BIN $USER_YAML $BUNDLE_YAML
 
 if [[ $? == 0 ]]; then
   # tests pass successfully
+  # figure out path of old build to remove
+  oldbuild=`readlink $stable_dir/build`
   # remove symlink to stable build
   unlink $stable_dir/build
   ln -s $test_dir/build-$today $stable_dir/build
+  # remove old build
+  rm -rf $oldbuild
   # update the hashes for 'stable'
   rm -rf $stable_dir/commits
   $script_dir/get_hashes.sh $test_dir/bundle $stable_dir/commits
